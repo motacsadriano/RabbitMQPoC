@@ -1,5 +1,6 @@
 package br.com.rabbitmqpoc;
 
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -28,5 +29,11 @@ public class RabbitMqPoCApplication {
 	            .paths(Predicates.not(PathSelectors.regex("/error.*")))
 	            .build();
 	}
+	
+	@Bean
+	public Jackson2JsonMessageConverter converter() {
+		return new Jackson2JsonMessageConverter();
+	}
+
 
 }
